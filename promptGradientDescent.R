@@ -1,10 +1,12 @@
-prompt = readline("Please input the name of the company you want to evaluate data for  \n")
-inputIndicator = (Quandl.search(query = prompt, silent = F))[[as.integer(readline("which result ?"))]]$code
 # The quantmod package is ready for use:
 library(Quandl)
 library(quantmod)
-# Load the Facebook data with the help of Quandl
-inpt = Quandl(inputIndicator,type="xts", start_date = readline("Start date as yyyy-mm-dd"), end_date = readline("End date as yyyy-mm-dd"))
+
+prompt = readline("Please input the name of the company you want to evaluate data for  \n")
+inputIndicator = (Quandl.search(query = prompt, silent = F))[[as.integer(readline("which result ?"))]]$code
+
+# Load the requested indicator data with the help of Quandl
+inpt = Quandl(inputIndicator,type="xts", start_date = readline("Start date as yyyy-mm-dd"), end_date = readline("End date as yyyy-mm-dd"), sort = "asc")
 print(head(inpt))
 # Plot the chart with the help of candleChart()
 
